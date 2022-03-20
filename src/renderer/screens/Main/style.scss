@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+}
+
+.info {
+  margin: 1rem 0;
+  & > * {
+    margin: 0.5rem 0;
+  }
+}
+
+.versions {
+  margin-bottom: 1rem;
+}
