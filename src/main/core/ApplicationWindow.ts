@@ -72,7 +72,7 @@ export default class ApplicationWindow {
       icon: inCurrentDir(logo), // TODO Check no img (maybe use mainWindow.setIcon())
       webPreferences: {
         preload: inCurrentDir("../preload/index.js"),
-        // sandbox: true, // TODO TEMP
+        sandbox: true,
       },
     });
     mainWindow.setMenuBarVisibility(false);
