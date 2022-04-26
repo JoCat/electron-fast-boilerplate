@@ -6,7 +6,7 @@ import installExtension, {
   REACT_DEVELOPER_TOOLS, // You can use another library (Vue, Angular, etc.)
 } from "electron-devtools-installer";
 
-const isDev = process.env.DEV || false;
+const isDev = process.env.DEV === "true" || false;
 const inCurrentDir = (dir: string) => join(__dirname, dir);
 
 export default class ApplicationWindow {
