@@ -2,9 +2,9 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import { join } from "path";
 import logo from "../../renderer/assets/images/logo.svg"; // You can change logo
 
-import installExtension, {
-  REACT_DEVELOPER_TOOLS, // You can use another library (Vue, Angular, etc.)
-} from "electron-devtools-installer";
+// import installExtension, {
+//   REACT_DEVELOPER_TOOLS, // You can use another library (Vue, Angular, etc.)
+// } from "electron-devtools-installer";
 
 const isDev = process.env.DEV === "true" || false;
 const inCurrentDir = (dir: string) => join(__dirname, dir);
@@ -21,13 +21,13 @@ export default class ApplicationWindow {
     // Some APIs can only be used after this event occurs.
     app.whenReady().then(() => {
       this.mainWindow = this.createMainWindow();
-      if (isDev) {
-        installExtension(REACT_DEVELOPER_TOOLS, {
-          loadExtensionOptions: { allowFileAccess: true },
-        })
-          .then((name: any) => console.log(`Added Extension: ${name}`))
-          .catch((err: any) => console.log("An error occurred: ", err));
-      }
+      // if (isDev) {
+      //   installExtension(REACT_DEVELOPER_TOOLS, {
+      //     loadExtensionOptions: { allowFileAccess: true },
+      //   })
+      //     .then((name: any) => console.log(`Added Extension: ${name}`))
+      //     .catch((err: any) => console.log("An error occurred: ", err));
+      // }
 
       app.on("activate", () => {
         // On macOS it's common to re-create a window in the app when the
