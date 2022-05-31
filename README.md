@@ -37,11 +37,11 @@ export default defineConfig({
 });
 ```
 
-download and replace tsconfig.json and tsconfig.node.json from here https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts
+download and replace tsconfig.json and tsconfig.node.json from [template-react-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts)
 
 сonfigure electron-devtools-installer in the src\main\core\ApplicationWindow.ts file
 
-make the rest of the settings in the src\renderer folder according to the template https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts/src
+make the rest of the settings in the src\renderer folder according to the template [template-react-ts/src](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts/src)
 
 ### To use Vue:
 
@@ -70,11 +70,11 @@ export default defineConfig({
 });
 ```
 
-download and replace tsconfig.json and tsconfig.node.json from here https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts
+download and replace tsconfig.json and tsconfig.node.json from [template-vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts)
 
 сonfigure electron-devtools-installer in the src\main\core\ApplicationWindow.ts file
 
-make the rest of the settings in the src\renderer folder according to the template https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts/src
+make the rest of the settings in the src\renderer folder according to the template [template-vue-ts/src](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts/src)
 
 Don't forget to configure env.d.ts/vite-env.d.ts
 
@@ -102,10 +102,10 @@ export default defineConfig({
 });
 ```
 
-download and replace tsconfig.json and tsconfig.node.json from here https://github.com/vitejs/vite/tree/main/packages/create-vite/template-svelte-ts
+download and replace tsconfig.json and tsconfig.node.json from [template-svelte-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-svelte-ts)
 
 сonfigure electron-devtools-installer in the src\main\core\ApplicationWindow.ts file
 
-make the rest of the settings in the src\renderer folder according to the template https://github.com/vitejs/vite/tree/main/packages/create-vite/template-svelte-ts/src
+make the rest of the settings in the src\renderer folder according to the template [template-svelte-ts/src](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-svelte-ts/src)
 
 Don't forget to configure vite-env.d.ts
