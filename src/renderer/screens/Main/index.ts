@@ -3,12 +3,9 @@ import logo from "../../assets/images/logo.svg";
 
 const versions = AppAPI.getVersions();
 
-function openExternal(event: MouseEvent) {
-  event.preventDefault();
-  AppAPI.openExternal((<HTMLAnchorElement>event.currentTarget).href);
-}
+const app = document.getElementById("app")!;
 
-document.getElementById("app")!.innerHTML = `<div class="main">
+app.innerHTML = `<div class="main">
 <img src="${logo}" width="120" />
 <div class="info">
   <h1>Hello!</h1>
@@ -23,4 +20,9 @@ document.getElementById("app")!.innerHTML = `<div class="main">
 <a href="https://github.com/JoCat/electron-fast-boilerplate">Our GitHub</a>
 </div>`;
 
-document.querySelectorAll("a").forEach((a) => (a.onclick = openExternal));
+app.querySelectorAll("a").forEach((a) => {
+  a.onclick = (event: MouseEvent) => {
+    event.preventDefault();
+    AppAPI.openExternal((<HTMLAnchorElement>event.currentTarget).href);
+  };
+});
