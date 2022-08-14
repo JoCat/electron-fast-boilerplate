@@ -78,7 +78,7 @@ export default class ApplicationWindow {
     mainWindow.setMenuBarVisibility(false);
 
     // loading renderer code (runtime)
-    if (isDev) mainWindow.loadURL("http://localhost:3000");
+    if (isDev) mainWindow.loadURL("http://localhost:5173");
     else mainWindow.loadFile(inCurrentDir("../renderer/index.html"));
 
     mainWindow.on("closed", () => {

@@ -16,6 +16,5 @@ export default defineConfig({
     outDir: toDir("dist/renderer"),
     assetsDir: ".",
     emptyOutDir: true,
-    brotliSize: false,
   },
 });

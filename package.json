@@ -27,16 +27,16 @@
     "@typescript-eslint/parser": "^5.11.0",
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
-    "electron": "^19.0.1",
+    "electron": "^20.0.2",
     "electron-devtools-installer": "^3.2.0",
-    "esbuild": "^0.14.21",
+    "esbuild": "^0.15.3",
     "eslint": "^8.9.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "sass": "^1.49.7",
     "typescript": "^4.5.5",
-    "vite": "^2.8.1"
+    "vite": "^3.0.7"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
