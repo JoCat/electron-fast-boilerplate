@@ -6,6 +6,8 @@ import logo from "../../renderer/assets/images/logo.svg"; // You can change logo
 //   REACT_DEVELOPER_TOOLS, // You can use another library (Vue, Angular, etc.)
 // } from "electron-devtools-installer";
 
+if (require("electron-squirrel-startup")) app.quit();
+
 const isDev = process.env.DEV === "true" || false;
 const inCurrentDir = (dir: string) => join(__dirname, dir);
 

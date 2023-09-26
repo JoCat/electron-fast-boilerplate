@@ -12,16 +12,24 @@
     "build:preload": "esbuild src/preload/index.ts --platform=browser --bundle --outdir=dist/preload --external:electron",
     "build:renderer": "vite build",
     "start:dev": "cross-env DEV=true nodemon --watch src --ext ts --ignore 'src/renderer' --exec electron .",
-    "start": "electron .",
+    "start": "electron-forge start",
     "clean": "rimraf dist",
     "prettier": "prettier --config .prettierrc.json --write src",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [
     "electron"
   ],
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
     "@types/node": "^18.15.2",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
@@ -47,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/JoCat/electron-fast-boilerplate/issues"
   },
-  "homepage": "https://github.com/JoCat/electron-fast-boilerplate#readme"
+  "homepage": "https://github.com/JoCat/electron-fast-boilerplate#readme",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
 }
