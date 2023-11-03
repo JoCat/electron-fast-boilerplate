@@ -19,8 +19,6 @@ npm i react react-dom
 npm i -D @types/react @types/react-dom @vitejs/plugin-react
 ```
 
-replace the contents of the `build:renderer` script with: `tsc && vite build`
-
 configure vite.config.ts:
 
 import plugin `import react from '@vitejs/plugin-react'`
@@ -51,8 +49,6 @@ Install additional dependencies:
 npm i vue
 npm i -D @vitejs/plugin-vue vue-tsc
 ```
-
-replace the contents of the `build:renderer` script with: `vue-tsc --noEmit && vite build`
 
 configure vite.config.ts:
 
