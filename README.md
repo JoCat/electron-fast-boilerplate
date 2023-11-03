@@ -1,6 +1,6 @@
-# Vite/esbuild Electron Boilerplate
+# Vite Electron Boilerplate
 
-Fast development boilerplate for Electron app based on Vite/esbuild + TypeScript + Sass + Vue/React/Svelte/Vanilla
+Fast development boilerplate for Electron app based on Vite + TypeScript + Sass + Vue/React/Svelte/Vanilla
 
 ![](.github/image.png)
 

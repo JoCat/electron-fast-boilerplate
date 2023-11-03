@@ -3,18 +3,10 @@ import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-vue";
 import { join } from "path";
 
-const toDir = (dir: string) => join(__dirname, dir);
-
+// https://vitejs.dev/config
 export default defineConfig({
-  root: toDir("src/renderer"),
-  base: "",
+  root: join(__dirname, "src/renderer"),
   // plugins: [react()], - for react
   // plugins: [vue()], - for vue
   // and more...
-  build: {
-    sourcemap: true,
-    outDir: toDir("dist/renderer"),
-    assetsDir: ".",
-    emptyOutDir: true,
-  },
 });

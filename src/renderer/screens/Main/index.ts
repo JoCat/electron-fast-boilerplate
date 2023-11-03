@@ -9,7 +9,7 @@ app.innerHTML = `<div class="main">
 <img src="${logo}" width="120" />
 <div class="info">
   <h1>Hello!</h1>
-  <p>It's Vite/esbuild Electron Boilerplate</p>
+  <p>It's Vite Electron Boilerplate</p>
 </div>
 <div class="versions">
   <div>NodeJS: ${versions.node}</div>

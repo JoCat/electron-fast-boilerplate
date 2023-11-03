@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, nativeImage } from "electron";
 import { join } from "path";
 import logo from "../../renderer/assets/images/logo.svg"; // You can change logo
 
@@ -8,7 +8,7 @@ import logo from "../../renderer/assets/images/logo.svg"; // You can change logo
 
 if (require("electron-squirrel-startup")) app.quit();
 
-const isDev = process.env.DEV === "true" || false;
+const isDev = process.env.DEV === "true" && !app.isPackaged;
 const inCurrentDir = (dir: string) => join(__dirname, dir);
 
 export default class ApplicationWindow {
@@ -21,7 +21,7 @@ export default class ApplicationWindow {
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
-    app.whenReady().then(() => {
+    app.on("ready", () => {
       this.mainWindow = this.createMainWindow();
       // if (isDev) {
       //   installExtension(REACT_DEVELOPER_TOOLS, {
@@ -30,13 +30,13 @@ export default class ApplicationWindow {
       //     .then((name: any) => console.log(`Added Extension: ${name}`))
       //     .catch((err: any) => console.log("An error occurred: ", err));
       // }
+    });
 
-      app.on("activate", () => {
-        // On macOS it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
-        if (BrowserWindow.getAllWindows().length === 0)
-          this.mainWindow = this.createMainWindow();
-      });
+    app.on("activate", () => {
+      // On macOS it's common to re-create a window in the app when the
+      // dock icon is clicked and there are no other windows open.
+      if (BrowserWindow.getAllWindows().length === 0)
+        this.mainWindow = this.createMainWindow();
     });
 
     // Quit when all windows are closed, except on macOS. There, it's common
@@ -63,7 +63,6 @@ export default class ApplicationWindow {
   private createMainWindow(): BrowserWindow {
     // creating and configuring a window
     const mainWindow = new BrowserWindow({
-      show: false, // Use 'ready-to-show' event to show window
       width: 900,
       height: 550,
       // frame: false,
@@ -71,33 +70,27 @@ export default class ApplicationWindow {
       maximizable: false,
       fullscreenable: false,
       title: "My Application",
-      icon: inCurrentDir(logo), // TODO Check no img (maybe use mainWindow.setIcon())
+      icon: nativeImage.createFromDataURL(logo),
       webPreferences: {
-        preload: inCurrentDir("../preload/index.js"),
+        preload: inCurrentDir("preload.js"),
         sandbox: false, // set true if you are not using shell
       },
     });
     mainWindow.setMenuBarVisibility(false);
 
     // loading renderer code (runtime)
-    if (isDev) mainWindow.loadURL("http://localhost:5173");
-    else mainWindow.loadFile(inCurrentDir("../renderer/index.html"));
+    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+      mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    } else {
+      mainWindow.loadFile(
+        inCurrentDir(`../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
+      );
+    }
+
+    if (isDev) mainWindow.webContents.openDevTools({ mode: "detach" });
 
     mainWindow.on("closed", () => {
       this.mainWindow = undefined;
-    });
-
-    /**
-     * If you install `show: true` then it can cause issues when trying to close the window.
-     * Use `show: false` and listener events `ready-to-show` to fix these issues.
-     *
-     * @see https://github.com/electron/electron/issues/25012
-     */
-    mainWindow.on("ready-to-show", () => {
-      mainWindow?.show();
-
-      // open developer tools when using development mode
-      if (isDev) mainWindow.webContents.openDevTools({ mode: "detach" });
     });
 
     return mainWindow;
