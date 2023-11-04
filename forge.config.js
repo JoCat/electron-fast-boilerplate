@@ -1,9 +1,17 @@
-// It's not really well suited for a production environment, at least because of this problem:
-// https://github.com/electron/forge/pull/3336
-
 module.exports = {
   packagerConfig: {
     asar: true,
+    ignore(path) {
+      if (!path) return false;
+      if (path.startsWith("/package.json")) return false;
+      if (path.startsWith("/.vite")) return false;
+
+      if (path === "/node_modules") return false;
+      if (path.startsWith("/node_modules/electron-squirrel-startup"))
+        return false;
+
+      return true;
+    },
   },
   rebuildConfig: {},
   makers: [
