@@ -6,9 +6,7 @@ import logo from "../../renderer/assets/images/logo.svg"; // You can change logo
 //   REACT_DEVELOPER_TOOLS, // You can use another library (Vue, Angular, etc.)
 // } from "electron-devtools-installer";
 
-if (require("electron-squirrel-startup")) app.quit();
-
-const isDev = process.env.DEV === "true" && !app.isPackaged;
+const isDev = !app.isPackaged;
 const inCurrentDir = (dir: string) => join(__dirname, dir);
 
 export default class ApplicationWindow {
@@ -72,19 +70,17 @@ export default class ApplicationWindow {
       title: "My Application",
       icon: nativeImage.createFromDataURL(logo),
       webPreferences: {
-        preload: inCurrentDir("preload.js"),
+        preload: inCurrentDir("../preload/index.js"),
         sandbox: false, // set true if you are not using shell
       },
     });
     mainWindow.setMenuBarVisibility(false);
 
     // loading renderer code (runtime)
-    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-      mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    if (isDev && process.env["ELECTRON_RENDERER_URL"]) {
+      mainWindow.loadURL(process.env["ELECTRON_RENDERER_URL"]);
     } else {
-      mainWindow.loadFile(
-        inCurrentDir(`../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
-      );
+      mainWindow.loadFile(inCurrentDir(`../renderer/index.html`));
     }
 
     if (isDev) mainWindow.webContents.openDevTools({ mode: "detach" });

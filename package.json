@@ -3,39 +3,29 @@
   "productName": "electron-fast-boilerplate",
   "version": "0.0.1",
   "description": "Fast development boilerplate for Electron app based on Vite + TypeScript + Vue/React/Svelte/Vanilla",
-  "main": ".vite/build/main.js",
+  "main": "./out/main/index.js",
   "private": true,
   "scripts": {
-    "dev": "cross-env DEV=true nodemon --watch src --ext ts --ignore 'src/renderer' --exec npm run start",
-    "start": "electron-forge start",
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
     "prettier": "prettier --config .prettierrc.json --write src",
     "lint": "eslint . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "build": "electron-vite build"
   },
   "keywords": [
     "electron"
   ],
   "devDependencies": {
-    "@electron-forge/cli": "^6.4.2",
-    "@electron-forge/maker-deb": "^6.4.2",
-    "@electron-forge/maker-rpm": "^6.4.2",
-    "@electron-forge/maker-squirrel": "^6.4.2",
-    "@electron-forge/maker-zip": "^6.4.2",
-    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
-    "@electron-forge/plugin-vite": "^6.4.2",
-    "@types/node": "^18.18.8",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
-    "cross-env": "^7.0.3",
-    "electron": "^27.0.3",
+    "@types/node": "^20.12.11",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "electron": "^30.0.3",
     "electron-devtools-installer": "^3.2.0",
-    "eslint": "^8.9.0",
-    "nodemon": "^3.0.1",
-    "prettier": "^3.0.3",
-    "sass": "^1.49.7",
-    "typescript": "^5.0.4"
+    "electron-vite": "^2.2.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   },
   "author": "JoCat",
   "license": "MIT",
@@ -46,8 +36,5 @@
   "bugs": {
     "url": "https://github.com/JoCat/electron-fast-boilerplate/issues"
   },
-  "homepage": "https://github.com/JoCat/electron-fast-boilerplate#readme",
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
-  }
+  "homepage": "https://github.com/JoCat/electron-fast-boilerplate#readme"
 }

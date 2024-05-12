@@ -1,1 +1,1 @@
-declare const { AppAPI }: typeof import("../preload/preload");
+declare const { AppAPI }: typeof import("../preload");
