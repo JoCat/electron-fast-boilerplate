@@ -1,3 +1,7 @@
+> [!WARNING]
+> Support for this template has been discontinued, I recommend using [electron-vite](https://electron-vite.org/) instead.
+
+___
 # Vite Electron Boilerplate
 
 Fast development boilerplate for Electron app based on Vite + TypeScript + Sass + Vue/React/Svelte/Vanilla
@@ -19,19 +23,23 @@ npm i react react-dom
 npm i -D @types/react @types/react-dom @vitejs/plugin-react
 ```
 
-configure vite.config.ts:
+configure electron.vite.config.ts:
 
 import plugin `import react from '@vitejs/plugin-react'`
-and set config `plugins: [react()]`
+and set config `plugins: [react()]` in renderer
 
 Example:
 
 ```ts
-import { defineConfig } from "vite";
+import { defineConfig } from "electron-vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()],
+  main: {},
+  preload: {},
+  renderer: {
+    plugins: [react()],
+  },
 });
 ```
 
@@ -50,19 +58,23 @@ npm i vue
 npm i -D @vitejs/plugin-vue vue-tsc
 ```
 
-configure vite.config.ts:
+configure electron.vite.config.ts:
 
 import plugin `import vue from '@vitejs/plugin-vue'`
-and set config `plugins: [vue()]`
+and set config `plugins: [vue()]` in renderer
 
 Example:
 
 ```ts
-import { defineConfig } from "vite";
+import { defineConfig } from "electron-vite";
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  plugins: [vue()],
+  main: {},
+  preload: {},
+  renderer: {
+    plugins: [vue()],
+  },
 });
 ```
 
@@ -82,19 +94,23 @@ Install additional dependencies:
 npm i -D @sveltejs/vite-plugin-svelte @tsconfig/svelte svelte svelte-preprocess tslib
 ```
 
-configure vite.config.ts:
+configure electron.vite.config.ts:
 
 import plugin `import { svelte } from '@sveltejs/vite-plugin-svelte'`
-and set config `plugins: [svelte()]`
+and set config `plugins: [svelte()]` in renderer
 
 Example:
 
 ```ts
-import { defineConfig } from "vite";
+import { defineConfig } from "electron-vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 
 export default defineConfig({
-  plugins: [svelte()],
+  main: {},
+  preload: {},
+  renderer: {
+    plugins: [svelte()],
+  },
 });
 ```
 
